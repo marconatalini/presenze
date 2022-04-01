@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" class="h-100">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Marco Natalini (c) 2022">
+        <title>{% block title %}Presenze Europrofili{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+
+    <body class="d-flex h-100 text-center text-white bg-dark">
+    {% block body %}
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        {% block body_header %}
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-start mb-0">Europrofiligroup S.p.A.</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link active" aria-current="page" href="{{ path('timbrature_index') }}">Home</a>
+                </nav>
+            </div>
+        </header>
+        {% endblock %}
+
+        <main class="px-3">
+            {#<h1>Cover your page.</h1>#}
+            <p class="lead">Inserisci qui il numero che trovi scritto nel tuo TAG</p>
+            <form action="{{ path('timbrature_visualizza') }}">
+                <div class="mb-3">
+                    {#<label for="exampleInputEmail1" class="form-label">N° TAG</label>#}
+                    <input type="number" name="codice" class="form-control" id="tagNumber" aria-describedby="tagNumber">
+                </div>
+                <button type="submit" class="btn btn-primary">Visualizza</button>
+            </form>
+        </main>
+
+        <footer class="mt-auto text-white-50">
+            <p>Rilevatore presenze by <span class="text-white">Marco Natalini</span></p>
+        </footer>
+    </div>
+    {% endblock %}
+    </body>
+</html>
